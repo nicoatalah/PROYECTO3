@@ -1,7 +1,12 @@
-import { SerialPort } from 'serialport'
+import { onEvent, sendEvent, startServer, } from "soquetic";
+import { ReadlineParser, SerialPort } from "serialport";
+import { sendData } from "../soquetic/soquetic.js";
+const port = new SerialPort({
+  //Completar con el puerto correcto
+  path: "COM3",
+  baudRate: 9600,
+});
 
-const serialport = new SerialPort({ path: 'COM5', baudRate: 9600 })
-
-export const arduino =(data)=>{
-    serialport.write(data.toString())
-}
+port.on("data",(data)=>{
+    sendData(data)
+});
