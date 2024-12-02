@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import { onEvent, startServer, sendEvent } from "soquetic";
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
@@ -25,18 +24,28 @@ async function fetchInfo(id) {
       "?key=sk-oG1M66c73d4c30d016581"
   );
   const json = await response.json();
-  let { common_name } = json;
+  let { common_name,
+    scientific_name,
+    type,
+    hardiness,
+    watering,
+    depth_water_requirement,
+    watering_general_benchmark,
+    sunlight,
+    pruning_month,
+    maintenance,
+    description
+     } = json;
 
-  info = { common_name };
+  info = { common_name,
+    scientific_name,
+    type,
+    watering,
+    depth_water_requirement,
+    watering_general_benchmark,
+    sunlight,
+    pruning_month,
+    maintenance,
+    description  };
   return info;
 }
-
-onEvent("infoPlanta", (nombre) => {
-  const res = fetchPlant(nombre);
-  return res;
-});
-
-const a = await fetchPlant("Ao Shime No Uchi Japanese Maple");
-console.log(a)
-
-startServer();
