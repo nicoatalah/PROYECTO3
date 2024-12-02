@@ -15,7 +15,7 @@ onEvent("añadirPlanta", async (data) => {
 });
 
 onEvent("readFavoritos",()=>{ return readFavoritos()})
-onEvent("updateFavoritos",(data)=>{ return updateFavoritos(data)})
+onEvent("updateFavoritos",(data)=>{  updateFavoritos(data)})
 
 
 export const sendData = (data)=>{
@@ -23,4 +23,3 @@ export const sendData = (data)=>{
 };
 startServer();
 
-console.log(updateFavoritos("gay"))
