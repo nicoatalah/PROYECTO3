@@ -6,7 +6,7 @@ import { sendData } from "../soquetic/server.js";
 
 const port = new SerialPort({
   //Completar con el puerto correcto
-  path: "COM3",
+  path: "COM4",
   baudRate: 9600,
 });
 let h = null
@@ -23,6 +23,8 @@ port.on("data",(data)=>{
       }
     
 })}
+
+console.log(port)
 sendData("enviarSensores",{h,t})
 
 
